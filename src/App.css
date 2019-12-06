@@ -1,5 +1,6 @@
-body {
+.body {
   font-family: 'Solway';
+  padding: 20px;
 }
 .App {
   text-align: center;
