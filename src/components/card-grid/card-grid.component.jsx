@@ -6,11 +6,9 @@ import './card-grid.styles.scss'
 class CardGrid extends React.Component{
     constructor(props){
         super(props)
-        console.log(props)
         this.state = {
             cards: props.cards
         }
-        console.log(this.state )
     }
 
     render(){
@@ -19,7 +17,7 @@ class CardGrid extends React.Component{
             <div className="card-grid">
                 {
                     cards.map(card => (
-                        <Card number={card}></Card>
+                        <Card key={card} number={card}></Card>
                     ))
                 }
             </div>
