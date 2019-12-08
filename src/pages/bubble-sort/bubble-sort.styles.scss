@@ -1,3 +1,10 @@
+.wrapper{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
 .add-card{
-    width: 35vw;
+    width: 20vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }

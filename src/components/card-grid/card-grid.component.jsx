@@ -12,12 +12,13 @@ class CardGrid extends React.Component{
     }
 
     render(){
+        console.log(this.props.cards)
         const {cards} = this.state
         return(
             <div className="card-grid">
                 {
-                    cards.map(card => (
-                        <Card key={card} number={card}></Card>
+                    cards.map((card, index) => (
+                        <Card key={index}  number={card}></Card>
                     ))
                 }
             </div>

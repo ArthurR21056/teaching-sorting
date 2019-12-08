@@ -3,6 +3,19 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr ;
     grid-gap: 20px;
+
+    .card:nth-child(4n + 1) {
+      background: linear-gradient(145deg, #f6d365 0%, #fda085 100%);
+    } 
+    .card:nth-child(4n + 2) {
+      background: linear-gradient(145deg, #f093fb 0%, #f5576c 100%);
+    } 
+    .card:nth-child(4n + 3) {
+      background: linear-gradient(145deg, #5ee7df 0%, #b490ca 100%);
+    } 
+    .card:nth-child(4n + 4) {
+      background: linear-gradient(145deg, #c3cfe2 0%, #c3cfe2 100%);
+    } 
   }
 .cardAdded-enter{
   opacity: 0.01;
