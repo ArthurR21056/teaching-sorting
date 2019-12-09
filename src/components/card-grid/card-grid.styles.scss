@@ -1,19 +1,20 @@
 .card-grid {
     padding: 20px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr ;
+    display: flex;
+    flex-direction: row;
     grid-gap: 20px;
+    justify-content: space-between;
 
-    .card:nth-child(4n + 1) {
+    .yellow-card {
       background: linear-gradient(145deg, #f6d365 0%, #fda085 100%);
     } 
-    .card:nth-child(4n + 2) {
+    .purple-card {
       background: linear-gradient(145deg, #f093fb 0%, #f5576c 100%);
     } 
-    .card:nth-child(4n + 3) {
+    .blue-card {
       background: linear-gradient(145deg, #5ee7df 0%, #b490ca 100%);
     } 
-    .card:nth-child(4n + 4) {
+    .light-blue-card {
       background: linear-gradient(145deg, #c3cfe2 0%, #c3cfe2 100%);
     } 
   }

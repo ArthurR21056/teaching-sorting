@@ -8,8 +8,6 @@ import Instructions from '../../components/instructions/instruction.component'
 
 import './bubble-sort.styles.scss'
 
-const INITIAL_ARRAY = [3, 2, 1]
-
 const BUBBLE_INSTRUCTION = [
     "LETS LEARN ABOUT BUBBLE SORTING!",
     "1.Look at the first number in the list.",
@@ -21,16 +19,28 @@ const BUBBLE_INSTRUCTION = [
     "7.If the end of the list is reached without any swaps being made, then the list is ordered and the algorithm can stop."
 ]
 
+const CARD_COLOR = [
+    "yellow-card",
+    "purple-card",
+    "blue-card",
+    "light-blue-card"
+]
+
 class BubbleSortPage extends React.Component {
     constructor(props) {
         super(props)
         const list = []
         var numCard = this.getRandomNumber(4, 10);
 
-        for(let i = 0; i < numCard; i++ ){
-            list.push(this.getRandomNumber(1, 100))
+        for (let i = 0; i < numCard; i++) {
+
+            list.push({
+                value: this.getRandomNumber(1, 100),
+                color: CARD_COLOR[this.getRandomNumber(0, 3)]
+            })
+
         }
-        
+
         this.state = {
             addCard: "",
             instructions: BUBBLE_INSTRUCTION,
@@ -40,32 +50,37 @@ class BubbleSortPage extends React.Component {
     }
 
     getRandomNumber = (min, max) => {
-        return Math.floor(Math.random() * (max - min + 1) ) + min;
+        return Math.floor(Math.random() * (max - min + 1)) + min;
     }
     sortList = () => {
         const unsortedList = this.state.cards
-        const sortedList = []
-
         for (const [index, value] of unsortedList.entries()) {
             if (unsortedList[index + 1] != null) {
-                if (unsortedList[index] > unsortedList[index + 1]) {
-                    sortedList.push(unsortedList[index + 1])
-
+                if (unsortedList[index].value > unsortedList[index + 1].value) {
                     var temp = unsortedList[index]
 
                     unsortedList[index] = unsortedList[index + 1]
                     unsortedList[index + 1] = temp
                 }
-                else {
-                    sortedList.push(unsortedList[index])
-                }
-            }
-            else {
-                sortedList.push(unsortedList[index])
             }
         }
 
-        this.setState({ cards: sortedList })
+        this.setState({ cards: unsortedList })
+    }
+    isSorted = () => {
+        const list = []
+        const compareList = []
+
+        for(const [index, value] of this.state.cards.entries()) {
+            list.push(value.value);
+            compareList.push(value.value)
+        }
+        compareList.sort()
+        for(var i = 0; i < list.length; i++){
+            if(list[i] != compareList[i]) return 
+        }
+        
+        return true
     }
     handleChange = event => {
         const { value, name } = event.target;
@@ -85,9 +100,10 @@ class BubbleSortPage extends React.Component {
         })
     }
     render() {
-        const { cards } = this.state
-        const { instructionId } = this.state
-
+        const { cards } = this.state;
+        const { instructionId } = this.state;
+        let isSorted = this.isSorted();
+        
         return (
             <div className="bubble-sort">
                 <div className="wrapper">
@@ -113,14 +129,15 @@ class BubbleSortPage extends React.Component {
                 <div className="card-grid">
                     {
                         cards.map((card, index) => (
-                            <Card key={index} number={card}></Card>
+                            <Card key={index} number={card.value} color={card.color}></Card>
                         ))
                     }
                 </div>
-                <button
-                    onClick={this.sortList}>
-                    SORT!
-                </button>
+                { isSorted ? 
+                    <h1>SORTED!</h1> :
+                    <button onClick={this.sortList}>SORT!</button>
+                }
+                
             </div>
         );
     }

@@ -4,6 +4,11 @@
 }
 .App {
   text-align: center;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  height: 100vh;
+  margin: 0;
 }
 
 .App-logo {
