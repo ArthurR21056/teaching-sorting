@@ -4,6 +4,9 @@ import './header.styles.scss'
 
 const Header = () => (
     <header className='header'>
+        <Link className='logo-container' to="/">
+            Sorting Algorthims
+        </Link>
         <div className="options">
         <Link className='option' to='/shop'>
             Bubble Sort

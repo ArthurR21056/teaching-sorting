@@ -4,7 +4,19 @@
     grid-template-columns: 1fr 1fr;
 }
 .add-card{
-    width: 20vw;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    justify-content: center;
+
+}
+.bubble-sort-header{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    .card-list{
+        width: 60%;
+        align-items: center;
+    }
 }

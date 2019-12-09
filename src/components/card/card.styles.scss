@@ -1,8 +1,8 @@
 .card {
     height: 200px;
-    min-width: 100px;
+    min-width: 120px;
     background-color: #ffdc7c;
-    border-radius: 20%;
+    border-radius: 25px;
     justify-content: space-between;
     text-align: center;
 
@@ -10,3 +10,15 @@
         margin-top: 70px;
     }
 }
+.yellow-card {
+    background: linear-gradient(145deg, #f6d365 0%, #fda085 100%);
+  } 
+.purple-card {
+    background: linear-gradient(145deg, #f093fb 0%, #f5576c 100%);
+  } 
+.blue-card {
+    background: linear-gradient(145deg, #5ee7df 0%, #b490ca 100%);
+  } 
+.light-blue-card {
+    background: linear-gradient(145deg, #c3cfe2 0%, #c3cfe2 100%);
+  } 

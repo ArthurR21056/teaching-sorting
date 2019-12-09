@@ -1,0 +1,15 @@
+.instructions{
+    height: 40vh;
+    width: 40%;
+    // background: linear-gradient(145deg, #7540ee 0%, #6f50b5 100%);
+    margin-left: 15px;
+    // border-radius: 25px;
+    text-align: left;
+    color: white;
+    font-weight: bold;
+    
+    .instruction{
+        padding: 5px 15px;
+        color: #34495e;
+    }
+}

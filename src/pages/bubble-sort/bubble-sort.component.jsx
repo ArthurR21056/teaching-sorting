@@ -4,9 +4,11 @@ import CardGrid from '../../components/card-grid/card-grid.component'
 import Card from '../../components/card/card.component'
 import CustomButton from '../../components/custom-button/custom-button.component'
 import FormInput from '../../components/form-input/form-input.component'
-import Instructions from '../../components/instructions/instruction.component'
+// import { DragDropContext } from 'react-beautiful-dnd'
+
 
 import './bubble-sort.styles.scss'
+import Instructions from '../../components/instructions/instruction.component'
 
 const BUBBLE_INSTRUCTION = [
     "LETS LEARN ABOUT BUBBLE SORTING!",
@@ -25,36 +27,48 @@ const CARD_COLOR = [
     "blue-card",
     "light-blue-card"
 ]
+const getRandomNumber = (min, max) => {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+const createArray = (minCards, maxCards, minValue, maxValue) => {
+    var numCard = getRandomNumber(4, 8);
+    const list = []
+    for (let i = 0; i < numCard; i++) {
+        var content = getRandomNumber(1, 100);
+        var color = CARD_COLOR[getRandomNumber(0, 3)]
+        list.push({
+            id: "item-" + content + getRandomNumber(1, 10000),
+            value: content,
+            color: color
+        })
+
+    }
+    return list
+
+}
 
 class BubbleSortPage extends React.Component {
     constructor(props) {
         super(props)
-        const list = []
-        var numCard = this.getRandomNumber(4, 10);
-
-        for (let i = 0; i < numCard; i++) {
-
-            list.push({
-                value: this.getRandomNumber(1, 100),
-                color: CARD_COLOR[this.getRandomNumber(0, 3)]
-            })
-
-        }
-
+        var cards = createArray(3, 10, 1, 100)
         this.state = {
             addCard: "",
             instructions: BUBBLE_INSTRUCTION,
             instructionId: 0,
-            cards: list
+            cards: cards,
+            guessCards: cards
         }
+        
     }
-
     getRandomNumber = (min, max) => {
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
+    getCard = () => {
+        return this.state.cards
+    }
     sortList = () => {
         const unsortedList = this.state.cards
-        for (const [index, value] of unsortedList.entries()) {
+        for (const [index] of unsortedList.entries()) {
             if (unsortedList[index + 1] != null) {
                 if (unsortedList[index].value > unsortedList[index + 1].value) {
                     var temp = unsortedList[index]
@@ -71,15 +85,15 @@ class BubbleSortPage extends React.Component {
         const list = []
         const compareList = []
 
-        for(const [index, value] of this.state.cards.entries()) {
+        for (const [ value] of this.state.cards.entries()) {
             list.push(value.value);
             compareList.push(value.value)
         }
         compareList.sort()
-        for(var i = 0; i < list.length; i++){
-            if(list[i] != compareList[i]) return 
+        for (var i = 0; i < list.length; i++) {
+            if (list[i] !== compareList[i]) return
         }
-        
+
         return true
     }
     handleChange = event => {
@@ -91,7 +105,10 @@ class BubbleSortPage extends React.Component {
         event.preventDefault();
 
         this.setState(state => {
-            const list = state.cards.push(state.addCard)
+            const list = state.cards.push({
+                value: state.addCard,
+                color: CARD_COLOR[this.getRandomNumber(0, 3)]
+            })
 
             return {
                 list,
@@ -101,43 +118,46 @@ class BubbleSortPage extends React.Component {
     }
     render() {
         const { cards } = this.state;
-        const { instructionId } = this.state;
+        const { instructions } = this.state;
+
         let isSorted = this.isSorted();
-        
         return (
             <div className="bubble-sort">
+
+                <div className="bubble-sort-header">
+                    <Instructions steps={instructions}></Instructions>
+                    <div className="card-list">
+                        <form className="add-card" onSubmit={this.handleSubmit} >
+                            <FormInput
+                                label="Add Card"
+                                name='addCard'
+                                type='number'
+                                handleChange={this.handleChange}
+                                value={this.state.addCard}
+                                required />
+                            <CustomButton type="submit">+</CustomButton>
+                        </form>
+                        <div className="card-grid">
+                            {
+                                cards.map((card, index) => (
+                                    <Card key={index} number={card.value} color={card.color}></Card>
+                                ))
+                            }
+                        </div>
+                    </div>
+                </div>
+
                 <div className="wrapper">
-                    <form className="add-card" onSubmit={this.handleSubmit} >
-                        <FormInput
-                            label="Add Card"
-                            name='addCard'
-                            type='number'
-                            handleChange={this.handleChange}
-                            value={this.state.addCard}
-                            required />
-                        <CustomButton
-                            type="submit">
-                            +
-                        </CustomButton>
-                    </form>
-                    <h1>
-                        {
-                            this.state.instructions[instructionId]
-                        }
-                    </h1>
+
+
                 </div>
-                <div className="card-grid">
-                    {
-                        cards.map((card, index) => (
-                            <Card key={index} number={card.value} color={card.color}></Card>
-                        ))
-                    }
-                </div>
-                { isSorted ? 
+                <CardGrid cards={this.getCard()}></CardGrid>
+
+                {isSorted ?
                     <h1>SORTED!</h1> :
                     <button onClick={this.sortList}>SORT!</button>
                 }
-                
+
             </div>
         );
     }
