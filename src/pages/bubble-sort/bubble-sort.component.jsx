@@ -65,7 +65,7 @@ class BubbleSortPage extends React.Component {
     }
     getCard = () => {
         return this.state.cards
-    }
+    } 
     sortList = () => {
         const unsortedList = this.state.cards
         for (const [index] of unsortedList.entries()) {
