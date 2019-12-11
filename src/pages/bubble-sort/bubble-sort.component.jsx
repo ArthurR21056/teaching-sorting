@@ -20,7 +20,7 @@ const BUBBLE_INSTRUCTION = [
     "6.If any numbers were swapped, repeat again from step 1",
     "7.If the end of the list is reached without any swaps being made, then the list is ordered and the algorithm can stop."
 ]
-
+    
 const CARD_COLOR = [
     "yellow-card",
     "purple-card",
