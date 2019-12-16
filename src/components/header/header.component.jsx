@@ -4,18 +4,22 @@ import './header.styles.scss'
 
 const Header = () => (
     <header className='header'>
-        <Link className='logo-container' to="/">
+        <div className="logo-container">
+        <Link className='logo-title' to="/">
             Sorting Algorthims
         </Link>
+        </div>
         <div className="options">
-        <Link className='option' to='/shop'>
-            Bubble Sort
+            <div className="option">
+                <Link to='/shop'>
+                    Bubble Sort
             </Link>
-        <Link className='option' to='/shop'>
-            Insertion Sort
+            </div>
+            <Link className='option' to='/shop'>
+                Insertion Sort
             </Link>
-        <Link className='option' to='/signin'>
-            Merge Sort
+            <Link className='option' to='/signin'>
+                Merge Sort
         </Link>
         </div>
 

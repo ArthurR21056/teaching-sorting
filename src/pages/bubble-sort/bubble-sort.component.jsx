@@ -20,7 +20,7 @@ const BUBBLE_INSTRUCTION = [
     "6.If any numbers were swapped, repeat again from step 1",
     "7.If the end of the list is reached without any swaps being made, then the list is ordered and the algorithm can stop."
 ]
-    
+
 const CARD_COLOR = [
     "yellow-card",
     "purple-card",
@@ -58,14 +58,14 @@ class BubbleSortPage extends React.Component {
             cards: cards,
             guessCards: cards
         }
-        
+
     }
     getRandomNumber = (min, max) => {
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
     getCard = () => {
         return this.state.cards
-    } 
+    }
     sortList = () => {
         const unsortedList = this.state.cards
         for (const [index] of unsortedList.entries()) {
@@ -85,7 +85,7 @@ class BubbleSortPage extends React.Component {
         const list = []
         const compareList = []
 
-        for (const [ value] of this.state.cards.entries()) {
+        for (const [value] of this.state.cards.entries()) {
             list.push(value.value);
             compareList.push(value.value)
         }
@@ -123,8 +123,36 @@ class BubbleSortPage extends React.Component {
         let isSorted = this.isSorted();
         return (
             <div className="bubble-sort">
+                <div className="title-card">
+                    <h1 className='title'>Bubble Sort</h1>
 
-                <div className="bubble-sort-header">
+                    <ul className="bubbles">
+                        <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+                    </ul>
+                </div>
+                <div className="info-card">
+                    <a className="title-row">Learn more</a>
+                    <div className="info-container">
+                        <div class="info-block">
+                        Bubble sort, sometimes referred to as sinking sort, is a simple sorting algorithm that repeatedly steps through the list, compares adjacent elements and swaps them if they are in the wrong order. The pass through the list is repeated until the list is sorted.
+                        </div>
+                        <div className="info-image">
+                            <ul>
+                                <li>1.Look at the first number in the list. </li>
+                                <li>2.Compare the current number with the next number. </li>
+                                <li>3.Is the next number smaller than the current number? If so, swap the two numbers around. If not, do not swap. </li>
+                                <li>4.Move to the next number along in the list and make this the current number.</li>
+                                <li>5.Repeat from step 2 until the last number in the list has been reached. </li>
+                                <li>6.If any numbers were swapped, repeat again from step 1. </li>
+                                <li>7.If the end of the list is reached without any swaps being made, then the list is ordered and the algorithm can stop. </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div className="tutorial">
+                    <h1>Step-by-Step</h1>
+                </div>
+                {/* <div className="bubble-sort-header">
                     <Instructions steps={instructions}></Instructions>
                     <div className="card-list">
                         <form className="add-card" onSubmit={this.handleSubmit} >
@@ -156,7 +184,7 @@ class BubbleSortPage extends React.Component {
                 {isSorted ?
                     <h1>SORTED!</h1> :
                     <button onClick={this.sortList}>SORT!</button>
-                }
+                } */}
 
             </div>
         );

@@ -10,7 +10,7 @@ function App() {
   return (
     <div className="App">
       <Header/>
-      <Switch>
+      <Switch className="main-page">
         <Route exact path='/' component={BubbleSortPage}/>
       </Switch>
     </div>
