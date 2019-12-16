@@ -4,7 +4,8 @@ import CardGrid from '../../components/card-grid/card-grid.component'
 import Card from '../../components/card/card.component'
 import CustomButton from '../../components/custom-button/custom-button.component'
 import FormInput from '../../components/form-input/form-input.component'
-// import { DragDropContext } from 'react-beautiful-dnd'
+import Meter from '../../components/meter/meter.component';
+
 
 
 import './bubble-sort.styles.scss'
@@ -122,7 +123,9 @@ class BubbleSortPage extends React.Component {
 
         let isSorted = this.isSorted();
         return (
+            
             <div className="bubble-sort">
+                
                 <div className="title-card">
                     <h1 className='title'>Bubble Sort</h1>
 
@@ -132,7 +135,10 @@ class BubbleSortPage extends React.Component {
                 </div>
                 <div className="info-card">
                     <a className="title-row">Learn more</a>
-                    <div className="info-container">
+                    <Meter title="Best Case: n" bigo="n" angle="130" amount="n^2"></Meter>
+                    {/* <Meter title="Worst Case: n^2" bigo="n^2" angle="40" amount="n^2"></Meter>
+                    <Meter title="Space Complexity: 1" bigo="1" angle="180" amount="n^2"></Meter> */}
+                    {/* <div className="info-container">
                         <div class="info-block">
                         Bubble sort, sometimes referred to as sinking sort, is a simple sorting algorithm that repeatedly steps through the list, compares adjacent elements and swaps them if they are in the wrong order. The pass through the list is repeated until the list is sorted.
                         </div>
@@ -147,7 +153,7 @@ class BubbleSortPage extends React.Component {
                                 <li>7.If the end of the list is reached without any swaps being made, then the list is ordered and the algorithm can stop. </li>
                             </ul>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
                 <div className="tutorial">
                     <h1>Step-by-Step</h1>

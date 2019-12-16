@@ -6,6 +6,7 @@
     top: 0;
     bottom: 0;
     right: 0;
+    
     .title-row{
         color: black;
         font-weight: bold;
@@ -18,10 +19,9 @@
     }
     .info-card{
         background-color: #f6f7f9;
-        height: 60vh;
+        height: 65vh;
         justify-content: center;
-        padding: 20px;
-        
+        padding: 20px;    
         .info-container{
             display: flex;
             flex-direction: row;

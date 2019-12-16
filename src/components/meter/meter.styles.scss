@@ -1,0 +1,40 @@
+.meter{
+    display: flex;
+    flex-direction: row;
+    // border-bottom: solid;
+    // border-color: rgba(232, 233, 235, 0.8);
+    overflow: auto;
+    .logo-wrapper{
+        display: flex;
+        flex-direction: column;
+        justify-items: flex-start;
+        max-width: 400px;
+        min-width: 120px;
+        height: 300px;
+        border-radius: 40px;
+        background-color: #c3cfe2;
+        box-shadow: 0 1px 2px 0 rgba(60,64,67,.3), 0 1px 3px 1px rgba(60,64,67,.15);
+        padding:10px;
+
+        .logo{
+            display: flex;
+            max-width: 340px;
+            min-width: 120px;
+            height: 120px;
+            padding-right: 40px;
+        }
+        .title{
+            text-align: center;
+            overflow: hidden;
+        }
+    }
+    .meter-info{
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        overflow: auto;
+
+    }
+    
+    
+}
